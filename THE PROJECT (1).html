@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shoe Embedder</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:#0f0f0f;
+    color:white;
+}
+
+body.light{
+    background:#f4f4f4;
+    color:black;
+}
+
+#topbar-container{
+    display:flex;
+    flex-direction:column;
+}
+
+#topbar{
+    display:flex;
+    align-items:center;
+    padding:10px;
+    background:#1a1a1a;
+    gap:8px;
+}
+
+body.light #topbar{
+    background:#e2e2e2;
+}
+
+#topbar button{
+    padding:6px 10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+input{
+    flex:1;
+    padding:6px;
+    border-radius:6px;
+    border:none;
+}
+
+#tabs{
+    display:flex;
+    gap:4px;
+    padding:6px;
+    background:#141414;
+    overflow-x:auto;
+}
+
+body.light #tabs{
+    background:#ddd;
+}
+
+.tab{
+    padding:6px 10px;
+    background:#333;
+    border-radius:6px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+body.light .tab{
+    background:#bbb;
+}
+
+.tab.active{
+    background:#4a7dff;
+}
+
+.close{
+    font-size:12px;
+    cursor:pointer;
+}
+
+#bookmarks{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    background:#111;
+    overflow-x:auto;
+}
+
+body.light #bookmarks{
+    background:#ccc;
+}
+
+.bookmark{
+    padding:4px 8px;
+    background:#444;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+body.light .bookmark{
+    background:#aaa;
+}
+
+iframe{
+    width:100%;
+    height:calc(100vh - 130px);
+    border:none;
+}
+
+body.fullscreen #topbar-container{
+    display:none;
+}
+body.fullscreen iframe{
+    height:100vh;
+}
+
+#fullscreen-btn-floating{
+    display:none;
+    position:fixed;
+    bottom:15px;
+    right:15px;
+    z-index:9999;
+    background:#4a7dff;
+    color:white;
+    border-radius:6px;
+    padding:6px 10px;
+    cursor:pointer;
+}
+
+body.fullscreen #fullscreen-btn-floating{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div id="topbar-container">
+<div id="topbar">
+<button onclick="goHome()">Home</button>
+<input id="url" placeholder="Search Bing or enter URL">
+<button onclick="go()">Go</button>
+<button onclick="newTab()">New Tab</button>
+<button onclick="addBookmark()">⭐</button>
+<button onclick="setHomepage()">Set Home</button>
+<button onclick="openHistory()">History</button>
+<button onclick="toggleMode()">Light/Dark</button>
+<button id="fullscreen-btn-toolbar" onclick="toggleFullscreen()">⛶</button>
+</div>
+
+<div id="tabs"></div>
+<div id="bookmarks"></div>
+</div>
+
+<button id="fullscreen-btn-floating" onclick="toggleFullscreen()">⛶</button>
+
+<iframe id="view"></iframe>
+
+<script>
+
+(function(){
+if(window.top !== window.self) return;
+if(sessionStorage.getItem("cloaked")) return;
+
+sessionStorage.setItem("cloaked","true");
+
+let w = window.open("about:blank","_blank");
+if(!w) return;
+
+w.document.write(document.documentElement.outerHTML);
+w.document.close();
+
+w.document.title="Google";
+
+let icon=w.document.createElement("link");
+icon.rel="icon";
+icon.href="https://www.google.com/favicon.ico";
+w.document.head.appendChild(icon);
+
+window.close();
+})();
+
+let tabs = JSON.parse(localStorage.getItem("tabs"))||[];
+let bookmarks = JSON.parse(localStorage.getItem("bookmarks"))||[];
+let historyData = JSON.parse(localStorage.getItem("historyData"))||[];
+
+let homepage = localStorage.getItem("homepage") || "https://www.bing.com";
+let current = 0;
+
+function save(){
+localStorage.setItem("tabs",JSON.stringify(tabs));
+localStorage.setItem("bookmarks",JSON.stringify(bookmarks));
+localStorage.setItem("historyData",JSON.stringify(historyData));
+}
+
+document.getElementById("url").addEventListener("keydown",function(e){
+if(e.key==="Enter") go();
+});
+
+function renderTabs(){
+
+let container=document.getElementById("tabs");
+container.innerHTML="";
+
+tabs.forEach((t,i)=>{
+
+let tab=document.createElement("div");
+tab.className="tab"+(i===current?" active":"");
+tab.draggable=true;
+
+let title=document.createElement("span");
+title.textContent=t.name || "Tab";
+
+title.ondblclick=()=>{
+let name=prompt("Rename tab",title.textContent);
+if(name){
+tabs[i].name=name;
+save();
+renderTabs();
+}
+};
+
+let close=document.createElement("span");
+close.textContent="✕";
+close.className="close";
+
+close.onclick=(e)=>{
+e.stopPropagation();
+tabs.splice(i,1);
+
+if(current>=tabs.length)
+current=tabs.length-1;
+
+renderTabs();
+load();
+save();
+};
+
+tab.appendChild(title);
+tab.appendChild(close);
+
+tab.onclick=()=>{
+current=i;
+load();
+renderTabs();
+};
+
+tab.ondragstart=e=>e.dataTransfer.setData("tabIndex",i);
+
+tab.ondragover=e=>e.preventDefault();
+
+tab.ondrop=e=>{
+let from=e.dataTransfer.getData("tabIndex");
+let moved=tabs.splice(from,1)[0];
+tabs.splice(i,0,moved);
+current=i;
+
+renderTabs();
+save();
+};
+
+container.appendChild(tab);
+
+});
+}
+
+function renderBookmarks(){
+
+let container=document.getElementById("bookmarks");
+container.innerHTML="";
+
+let sorted=[...bookmarks].sort((a,b)=>b.pinned-a.pinned);
+
+sorted.forEach((b,i)=>{
+
+let btn=document.createElement("div");
+btn.className="bookmark";
+btn.textContent=b.name;
+
+btn.onclick=()=>{
+tabs[current].url=b.url;
+load();
+};
+
+btn.oncontextmenu=e=>{
+
+e.preventDefault();
+
+let action=prompt("Type: pin, edit, delete");
+
+if(action==="delete"){
+bookmarks.splice(i,1);
+}
+
+if(action==="pin"){
+bookmarks[i].pinned=!bookmarks[i].pinned;
+}
+
+if(action==="edit"){
+let name=prompt("Bookmark name",b.name);
+let url=prompt("Bookmark URL",b.url);
+
+if(name && url)
+bookmarks[i]={...bookmarks[i],name,url};
+}
+
+renderBookmarks();
+save();
+};
+
+container.appendChild(btn);
+
+});
+}
+
+function newTab(){
+tabs.push({name:"New Tab",url:homepage});
+current=tabs.length-1;
+
+renderTabs();
+load();
+save();
+}
+
+function load(){
+
+if(!tabs[current]) return;
+
+document.getElementById("view").src=tabs[current].url;
+document.getElementById("url").value=tabs[current].url;
+
+}
+
+function go(){
+
+let u=document.getElementById("url").value;
+
+if(!u.includes("."))
+u="https://www.bing.com/search?q="+encodeURIComponent(u);
+
+else if(!u.startsWith("http"))
+u="https://"+u;
+
+tabs[current].url=u;
+tabs[current].name=u.split("/")[2]||u;
+
+historyData.unshift({
+url:u,
+time:new Date().toLocaleString()
+});
+
+load();
+renderTabs();
+save();
+}
+
+function goHome(){
+tabs[current].url=homepage;
+load();
+}
+
+function addBookmark(){
+
+let name=prompt("Bookmark name");
+let url=tabs[current].url;
+
+if(name){
+bookmarks.push({name,url,pinned:false});
+renderBookmarks();
+save();
+}
+}
+
+function setHomepage(){
+
+let u=prompt("Enter homepage URL",homepage);
+
+if(u){
+homepage=u;
+localStorage.setItem("homepage",homepage);
+}
+}
+
+function openHistory(){
+
+let html=`
+<html>
+<head>
+<title>History</title>
+<style>
+body{font-family:sans-serif;background:#111;color:white;padding:20px;}
+.item{padding:8px;border-bottom:1px solid #333;cursor:pointer;}
+.item:hover{background:#222;}
+.time{font-size:12px;color:#aaa;}
+</style>
+</head>
+<body>
+<h1>History</h1>
+`;
+
+historyData.forEach(h=>{
+html+=`
+<div class="item" onclick="parent.loadHistory('${h.url}')">
+${h.url}
+<div class="time">${h.time}</div>
+</div>
+`;
+});
+
+html+=`</body></html>`;
+
+let blob=new Blob([html],{type:"text/html"});
+document.getElementById("view").src=URL.createObjectURL(blob);
+
+}
+
+function loadHistory(url){
+tabs[current].url=url;
+load();
+}
+
+function toggleMode(){
+document.body.classList.toggle("light");
+}
+
+function toggleFullscreen(){
+document.body.classList.toggle("fullscreen");
+}
+
+if(tabs.length===0) newTab();
+
+renderTabs();
+renderBookmarks();
+load();
+
+</script>
+
+</body>
+</html>
