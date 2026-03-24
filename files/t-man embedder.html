@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Home - Classroom</title>
+	<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-KEPPWG5Z36"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-KEPPWG5Z36");
+    </script>
+  </head>
+  <body style="font-family: system-ui, sans-serif; background-color: black"
+    <nav class="nav" id="nav">
+		<a href="Google Classroom.html">Home</a>
+		<a href="passkey.html">References</a>
+            
+           
+          </ul>
+        </div>
+      </header>
+      <section>
+        <h1 style="
+				color: white; 
+				text-align: center; 
+				justify-content: center;
+				font-size: 40px;
+				margin-top: 50px
+			"
+		>
+			Tuckerman<split style="color: transparent"> </split><split style="color: red">Embedder</split>
+        </h1>
+        <p
+          class="sub"
+          style="
+			text-align: center; 
+			justify-content: center
+            width: 50%;
+            margin-inline: 25%;
+            margin-bottom: 20px;
+            font-size: 25px
+          "
+        >
+          <a href="" id="macvgabout" style="
+				color: red; 
+				text-align: center; 
+				justify-content: center;
+				font-size: 25px;
+				margin-top: 50px
+			"
+		>
+		Open in about:blank</a
+	>
+		  
+        </p>
+      </div>
+    </nav>
+		<div style="color:red;
+				justify-content:center;
+				text-align:center;
+				font-size: 25px;
+				margin-top: 50px
+			"
+		>
+			<a href="https://docs.google.com/document/d/1AmSeJrz6JkgCVQAG14qwuisv3C-_7CYEpcyH8bcU5EU/edit?tab=t.0" target="_blank" style="color: red">Helpful Links (Request Access)</a>
+		</div>
+    <div class="wrap" style="padding-bottom: 40px; color: white; id="wrap">
+      <header class="homeheader">
+        <div
+          class="sub"
+          style="
+			color: white;
+            width: 65%;
+            margin-inline: 17.5%;
+            text-align: center;
+            line-height: 50px;
+          "
+        >
+        </div>
+			<h1 style="
+				color: white; 
+				text-align: center; 
+				justify-content: center;
+				font-size: 25px;
+				margin-top: 50px
+			"
+			>
+				Enter the website you wish to embed below:
+			</h1>
+        <form style="
+				display:grid;
+				text-align: center; 
+				justify-content: center;
+				margin-top: 42px
+			"
+		>
+          <input
+            type="text"
+            id="name5"
+            style="text-align:center" placeholder="Courtesy of Richmond!"
+          />
+          <button onclick="embed()" id="go" type="submit">Ascend to Agartha!</button>
+        </form>
+      </section>
+    </div>
+	<img style="display: block; margin:auto; border-radius: 50%"  src="https://cmsv2-assets.apptegy.net/uploads/4189/logo/3514/logo.png" width="110" height="110">
+    <footer style="font-size: 20px; color: white; margin-top: 100px; user-select: none; text-align:center" class="footer">
+      <strong>© CF, ZL, AH. All rights reserved. </strong><a href="/"></a
+      <br />
+      <strong>GOD <split style="color: #0038b8"> BLESS </split> ISRAEL!</strong><br
+        style="margin-bottom: 10px"
+      />
+
+    </footer>
+    <script src="app.js"></script>
+    <script>
+      document.getElementById("macvgabout").addEventListener("click", () => {
+        const win = window.open();
+        win.document.body.style.margin = "0";
+        win.document.body.style.height = "100vh";
+        const iframe = win.document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.margin = "0";
+        iframe.referrerpolicy = "no-referrer";
+        iframe.allow = "fullscreen";
+        iframe.src = window.location.href;
+        win.document.body.appendChild(iframe);
+      });
+      const allForms = document.querySelectorAll("form");
+      allForms.forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+        });
+      });
+      const urlt = document.getElementById("name5");
+      const urlObj = new window.URL(window.location.href);
+      function embed() {
+        if (
+          !urlt.value.startsWith("https://") &&
+          !urlt.value.startsWith("http://")
+        ) {
+          urlt.value = `https://${urlt.value.split("https://").pop()}`;
+        } else if (urlt.value.startsWith("http://")) {
+          urlt.value = `https://${urlt.value.split("http://").pop()}`;
+        }
+        const win = window.open();
+        win.document.body.style.margin = "0";
+        win.document.body.style.height = "100vh";
+        const iframe = win.document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.margin = "0";
+        iframe.referrerpolicy = "no-referrer";
+        iframe.allow = "fullscreen";
+        iframe.src = urlt.value;
+        win.document.body.appendChild(iframe);
+      }
+
+      const custom = document.getElementById("custom");
+      const first = document.getElementById("color1");
+      const second = document.getElementById("color2");
+      let custom1 = localStorage.getItem("first");
+      let custom2 = localStorage.getItem("second");
+      if (custom1) {
+        first.value = custom1;
+      }
+      if (custom2) {
+        second.value = custom2;
+      }
+      function create() {
+        custom.style.visibility = "visible";
+        custom.style.opacity = "1";
+        document.addEventListener("click", (e) => {
+          if (
+            e.target.getAttribute("id") != "custombtn" &&
+            e.target != custom &&
+            e.target != first &&
+            e.target != second
+          ) {
+            custom.style.opacity = "0";
+            custom.style.visibility = "hidden";
+            document.documentElement.style.setProperty(
+              "--bg-color",
+              first.value
+            );
+            document.documentElement.style.setProperty(
+              "--bg-color-2",
+              second.value
+            );
+            localStorage.setItem("theme", "custom");
+            localStorage.setItem("first", first.value);
+            localStorage.setItem("second", second.value);
+          } else {
+            custom.style.opacity = "1";
+            custom.style.visibility = "visible";
+          }
+        });
+      }
+      function dark() {
+        localStorage.setItem("theme", null);
+      }
+
+      function ddark() {
+        localStorage.setItem("theme", "deep");
+      }
+
+      function light() {
+        localStorage.setItem("theme", "light");
+      }
+
+      function cyber() {
+        localStorage.setItem("theme", "cyber");
+      }
+    </script>
+  </body>
+</html>
