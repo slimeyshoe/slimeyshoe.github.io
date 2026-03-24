@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="slimyshoeclear.png">
+
+<title>The Shoe Shelf</title>
+
+<style>
+
+body{
+	margin:0;
+	flex:1;
+    font-family:Arial, Helvetica, sans-serif;
+	cursor:default;
+	min-height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/Backgorund.gif');
+	background-size: default;
+    color:#ffffff
+}
+
+/* navi bar */
+
+header{
+	position:fixed;
+	box-sizing: border-box;
+	width:100%;
+	background-color:rgba(0,0,0,0.75);
+    border-bottom:2px solid #aa85ff;
+    padding:18px;
+	display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+	color:#aa85ff;
+    font-size:26px;
+	text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.logo:hover{
+    color:#58fa59;
+    transform:translateY(-5px) scale(1.02);
+}
+
+nav a{
+	font-weight:bold;
+    color:#aa85ff;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#58fa59;
+	transform:translateY(-5px) scale(1.02);
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero p{
+	font-weight:bold;
+    color:#58fa59;
+    max-width:600px;
+    margin:auto;
+}
+
+.hero button{
+    margin-top:25px;
+    padding:12px 26px;
+    border-radius:6px;
+    background:rgba(0,0,0,0.75);
+	transition:.25s;
+    color:#58fa59;
+    font-size:16px;
+    cursor:pointer;
+    border:2px solid #aa85ff;
+}
+
+.hero button:hover{
+    transform:translateY(-5px) scale(1.02);
+}
+
+h1{
+	color:#aa85ff;
+    font-size:26px;
+	text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+h1:hover{
+    color:#58fa59;
+    transform:translateY(-5px) scale(1.02);
+}
+
+
+/*Section*/
+
+.container{
+    padding:40px 8%;
+}
+
+.section-title{
+	font-weight:bold;
+	color:#aa85ff;
+    font-size:24px;
+    margin-bottom:20px;
+	transition:.25s
+}
+
+.section-title:hover{
+	color:#58fa59;
+	transform:translateY(-5px)scale(1.02);
+}
+
+/* Others */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+	text-decoration: none;
+    gap:20px;
+}
+
+.card{
+	color:#aa85ff;
+    background:rgba(0,0,0,0.75);
+    border-radius:10px;
+    padding:25px;
+	text-decoration: none;
+    transition:.25s;
+    cursor:pointer;
+    border:2px solid #aa85ff;
+}
+
+.card:hover{
+    transform:translateY(-5px) scale(1.02);
+	text-decoration: none;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.card p{
+    color:#58fa59;
+}
+
+/* Footer */
+
+footer{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:75px;
+	width:100vw;
+	position: fixed;
+	bottom: 0;
+    color:#aa85ff;
+	transition:.25s;
+}
+
+footer:hover{
+	color:#58fa59;
+	transform:translateY(-5px)scale(1.02)
+
+</style>
+
+<!--about:blank function script-->
+
+<script>
+function openBlank(){
+    let win = window.open();
+    
+    if(!win){
+        alert("<b>Popup blocked!</b> Please allow popups for this site.");
+        return;
+    }
+
+    win.document.body.style.margin = "0";
+
+    let iframe = win.document.createElement("iframe");
+    iframe.style.border = "none";
+    iframe.style.width = "100vw";
+    iframe.style.height = "100vh";
+    iframe.src = window.location.href;
+
+    win.document.body.appendChild(iframe);
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<div>
+<a href="index.html" class="logo">The Shoe Shelf</a>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="tools.html">Tools</a>
+<a href="projects.html">Projects</a>
+<a href="games.html">Games</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>The Shoe Shelf</h1>
+
+<p>Sponsored by Richmond.</p>
+
+<button onclick="openBlank()" class="blank-button">Open in about:blank</button>
+
+</section>
+
+<div class="container">
+
+<div class="section-title">Featured Tools</div>
+
+<div class="grid">
+
+<a href="embedder.html" text-decoration: none; class="card">
+<h3>Shoe Embedder</h3>
+<p>Embed and browse websites directly inside a clean interface.</p>
+</a>
+
+<a href="browser.html" class="card">
+<h3>"THE PROJECT"</h3>
+<p>A lightweight browser built directly into the site.</p>
+</a>
+
+<a href="games.html" class="card">
+<h3>Web Games</h3>
+<p>Play browser games instantly with no downloads.</p>
+</a>
+
+<a href="experiments.html" class="card">
+<h3>Experiments</h3>
+<p>Random tools and projects I'm currently testing.</p>
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+© CF, ZL, AH, TR.
+</body>
+</footer>
+</html>

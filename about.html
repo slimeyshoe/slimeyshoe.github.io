@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Example Game</title>
+
+<style>
+body{
+	margin:0;
+	flex:1;
+    font-family:Arial, Helvetica, sans-serif;
+	cursor:default;
+	min-height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/Backgorund.gif');
+	background-size: default;
+    color:#ffffff
+}
+
+/* navi bar */
+
+header{
+	position:fixed;
+	box-sizing: border-box;
+	width:100%;
+	background-color:rgba(0,0,0,0.75);
+    border-bottom:2px solid #aa85ff;
+    padding:18px;
+	display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+	color:#aa85ff;
+    font-size:26px;
+	text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.logo:hover{
+    color:#58fa59;
+    transform:translateY(-5px) scale(1.02);
+}
+
+nav a{
+	font-weight:bold;
+    color:#aa85ff;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#58fa59;
+}
+
+/* box */
+
+.container{
+	padding:100px 20px;
+    max-width:1024px;
+    margin:auto;
+}
+
+.container h1{
+	color:#aa85ff;
+	font-weight:bold;
+	transition:.25s;
+}
+
+.container h1:hover{
+	color:#58fa59;
+	transform:translateY(-5px)scale(1.02);
+}
+
+.description{
+    margin-top:15px;
+	color:#58fa59;
+    background-color:rgba(0,0,0,0.75);
+    border:2px solid #aa85ff;
+    border-radius:14px;
+    padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div>
+<a href="index.html" class="logo">The Shoe Shelf</a>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="tools.html">Tools</a>
+<a href="projects.html">Projects</a>
+<a href="games.html">Games</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+    <h1>About The Shoe Shelf:</h1>
+
+    <div class="description">
+        This project all started between a few friends with a file found on GitHub and hopes to be able to actually have fun at school.
+		<br><br>
+		It has now turned into the numerous projects, tools, and other resources available on this website. Started in November of 2025, we have been working on all of this for a bit.
+		<br><br>
+		<br><br>
+		We don't mind promotion or sharing of our work, but <b>PLEASE</b> do not rip our hard work as your own.
+		We have spent so much time on this project and are glad to have the ability to share it.
+		<br><br>
+		We also appreciate all the help and tips that users have given us to be able to create better, more powerful tools. Without the users, this project wouldn't be what it is.
+		<br><br>
+		<i>- CF & ZL</i>
+	
+    </div>
+
+</div>
+
+</body>
+</html>

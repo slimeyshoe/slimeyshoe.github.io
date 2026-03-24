@@ -1,0 +1,229 @@
+<html>
+	<head>
+<style>
+
+body{
+	margin:0;
+	flex:1;
+    font-family:Arial, Helvetica, sans-serif;
+	cursor:default;
+	min-height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/Backgorund.gif');
+	background-size: default;
+}
+
+/* navi bar */
+
+header{
+	position:fixed;
+	box-sizing: border-box;
+	width:100%;
+	background-color:rgba(0,0,0,0.75);
+    border-bottom:2px solid #aa85ff;
+    padding:18px;
+	display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+	color:#aa85ff;
+    font-size:26px;
+	text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.logo:hover{
+    color:#58fa59;
+    transform:translateY(-5px) scale(1.02);
+}
+
+nav a{
+	font-weight:bold;
+    color:#aa85ff;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#58fa59;
+	transform:translateY(-5px) scale(1.02);
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero p{
+	font-weight:bold;
+    color:#58fa59;
+    max-width:600px;
+    margin:auto;
+}
+
+/*Section*/
+
+h1{
+	color:#aa85ff;
+    font-size:26px;
+	text-decoration:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+h1:hover{
+    color:#58fa59;
+    transform:translateY(-5px) scale(1.02);
+}
+
+.container{
+    padding:40px 8%;
+}
+
+.section-title{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+/* Footer */
+
+footer{
+    margin-top:40px;
+    padding:20px;
+    text-align:center;
+    background:#111;
+    color:#666;
+}
+
+/* MAIN */
+.container{
+    max-width:1280px;
+    margin:auto;
+    padding:20px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
+    gap:15px;
+}
+
+/* CARD */
+.card{
+    background-color:rgba(0,0,0,0.75);
+    border:1px solid #222;
+    border-radius:12px;
+    padding:10px;
+    text-decoration:none;
+	color:#58fa59;
+	font-weight:bold;
+    transition:0.25s;
+	border:2px solid #aa85ff;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+	color:#58fa59;
+	font-weight:default;
+}
+
+.thumb{
+    width:100%;
+    height:90px;
+    background:#222;
+    border-radius:8px;
+    margin-bottom:8px;
+}
+
+.name{
+    font-size:14px;
+}
+
+
+
+</style>
+
+<header>
+	<body>
+		<div>
+		<a href="index.html" class="logo">The Shoe Shelf</a>
+	</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="tools.html">Tools</a>
+<a href="projects.html">Projects</a>
+<a href="games.html">Games</a>
+<a href="about.html">About</a>
+</nav>
+</header>
+
+</head>
+
+<div class="hero">
+<body>
+
+<h1>All Games</h1>
+
+<p>The best goy-boy game selection out there!</p>
+</div>
+
+<div class="container">
+    <div class="grid" id="gameGrid"></div>
+</div>
+
+<script>
+/* Game add section */
+const games = [
+    {
+        name:"Eagle Ride",
+        page:"eagleride.html",
+        thumb:"eagle-ride_16x9-cover.png"
+    },
+    {
+        name:"Diddy",
+        page:"game2.html",
+        thumb:""
+    },
+    {
+        name:"Blud",
+        page:"game3.html",
+        thumb:""
+    },
+	{
+		name:"NIG",
+		page:"ger.html",
+		thumb:""
+	}
+];
+
+/* Grid builder */
+const grid = document.getElementById("gameGrid");
+
+games.forEach(game => {
+    const card = document.createElement("a");
+    card.href = game.page;
+    card.className = "card";
+
+    card.innerHTML = `
+        <div class="thumb" style="background-image:url('${game.thumb}'); background-size:cover;"></div>
+        <div class="name">${game.name}</div>
+    `;
+
+    grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
