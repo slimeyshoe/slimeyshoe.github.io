@@ -1,279 +1,180 @@
 <!DOCTYPE html>
-<html>
-	<title>Home - Classroom</title>
-	<link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/classroom/favicon.png">
-	  
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Home - Classroom</title>
+<link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png">
+
 <style>
-
-html{
-	margin: 0;
-  	padding: 0;
-}
-	
-body{
-	margin: 0;
-  	padding: 0;
-	flex:1;
-    font-family:Arial, Helvetica, sans-serif;
-	cursor:default;
-	min-height: 100vh;
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/Backgorund.gif');
-	background-size: default;
-    color:#ffffff
+    color: white;
 }
 
-.shelf_header{
-	position:fixed;
-	box-sizing: border-box;
-	background-color:rgba(0,0,0,0.75);
-    border-bottom:2px solid #aa85ff;
-	width:100%;
-    padding:18px;
-	display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* HEADER */
+.shelf_header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0,0,0,0.75);
+    border-bottom: 2px solid #aa85ff;
+    box-sizing: border-box;
 }
 
-.logo{
-	color:#aa85ff;
-    font-size:26px;
-	text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
+.logo {
+    color: #aa85ff;
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .25s;
 }
 
-.logo:hover{
-    color:#58fa59;
-    transform:translateY(-5px) scale(1.02);
+.logo:hover {
+    color: #58fa59;
+    transform: translateY(-5px) scale(1.02);
 }
 
-nav a{
-	font-weight:bold;
-    color:#aa85ff;
-    text-decoration:none;
-    margin-left:20px;
-    font-size:14px;
-    transition:.25s;
+nav a {
+    font-weight: bold;
+    color: #aa85ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: .25s;
 }
 
-nav a:hover{
-    color:#58fa59;
+nav a:hover {
+    color: #58fa59;
 }
 
+/* MAIN CONTENT */
+.main {
+    padding-top: 100px; /* prevents header overlap */
+    text-align: center;
+}
+
+input {
+    padding: 8px;
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.footer {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 20px;
+}
 </style>
+</head>
 
-<body>   
-	<div>
+<body>
+
 <header class="shelf_header">
+    <a href="index.html" class="logo">The Shoe Shelf</a>
 
-	<div>
-		<a href="index.html" class="logo">The Shoe Shelf</a>
-	</div>
-
-<nav>
-	<a href="index.html">Home</a>
-	<a href="tools.html">Tools</a>
-	<a href="projects.html">Projects</a>
-	<a href="games.html">Games</a>
-	<a href="about.html">About</a>
-</nav>
-
-</header>     
-
-      <section>
-        <h1 style="
-				color: white; 
-				text-align: center; 
-				justify-content: center;
-				font-size: 40px;
-			"
-		>
-			Tuckerman<split style="color: transparent"> </split><split style="color: red">Embedder</split>
-        </h1>
-        <p
-          class="sub"
-          style="
-			text-align: center; 
-			justify-content: center
-            width: 50%;
-            margin-inline: 25%;
-            margin-bottom: 20px;
-            font-size: 25px
-          "
-        >
-          <a href="" id="macvgabout" style="
-				color: red; 
-				text-align: center; 
-				justify-content: center;
-				font-size: 25px;
-				margin: 50px
-			"
-		>
-		Open in about:blank</a
-	>
-		  
-        </p>
-      </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tools.html">Tools</a>
+        <a href="projects.html">Projects</a>
+        <a href="games.html">Games</a>
+        <a href="about.html">About</a>
     </nav>
-		<div style="color:red;
-				justify-content:center;
-				text-align:center;
-				font-size: 25px;
-				margin: 50px
-			"
-		>
-			<a href="https://docs.google.com/document/d/1AmSeJrz6JkgCVQAG14qwuisv3C-_7CYEpcyH8bcU5EU/edit?tab=t.0" target="_blank" style="color: red">Helpful Links (Request Access)</a>
-		</div>
-    <div class="wrap" id="wrap" style="padding-bottom: 40px; color: white;">
-      <header class="homeheader">
-        <div
-          class="sub"
-          style="
-			color: white;
-            width: 65%;
-            margin-inline: 17.5%;
-            text-align: center;
-            line-height: 50px;
-          "
-        >
-        </div>
-			<h1 style="
-				color: white; 
-				text-align: center; 
-				justify-content: center;
-				font-size: 25px;
-				margin-top: 50px
-			"
-			>
-				Enter the website you wish to embed below:
-			</h1>
-        <form style="
-				display:grid;
-				text-align: center; 
-				justify-content: center;
-				margin-top: 42px
-			"
-		>
-          <input
-            type="text"
-            id="name5"
-            style="text-align:center" placeholder="Courtesy of Richmond!"
-          />
-          <button onclick="embed()" id="go" type="submit">Ascend to Agartha!</button>
-        </form>
-      </section>
+</header>
+
+<div class="main">
+
+    <h1 style="font-size:40px;">
+        Tuckerman <span style="color:red;">Embedder</span>
+    </h1>
+
+    <a href="#" id="macvgabout" style="color:red; font-size:25px;">
+        Open in about:blank
+    </a>
+
+    <div style="margin: 40px;">
+        <a href="https://docs.google.com/document/d/1AmSeJrz6JkgCVQAG14qwuisv3C-_7CYEpcyH8bcU5EU/edit"
+           target="_blank" style="color:red;">
+           Helpful Links (Request Access)
+        </a>
     </div>
-	<img style="display: block; margin:auto; border-radius: 50%"  src="https://cmsv2-assets.apptegy.net/uploads/4189/logo/3514/logo.png" width="110" height="110">
-    <footer style="font-size: 20px; color: white; margin-top: 100px; user-select: none; text-align:center" class="footer">
-      <strong>© CF, ZL, AH. All rights reserved. </strong><a href="/"></a
-      <br />
-      <strong>GOD <split style="color: #0038b8"> BLESS </split> ISRAEL!</strong><br
-        style="margin-bottom: 10px"
-      />
 
-    </footer>
-    <script src="app.js"></script>
-    <script>
-      document.getElementById("macvgabout").addEventListener("click", () => {
-        const win = window.open();
-        win.document.body.style.margin = "0";
-        win.document.body.style.height = "100vh";
-        const iframe = win.document.createElement("iframe");
-        iframe.style.border = "none";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.margin = "0";
-        iframe.referrerpolicy = "no-referrer";
-        iframe.allow = "fullscreen";
-        iframe.src = window.location.href;
-        win.document.body.appendChild(iframe);
-      });
-      const allForms = document.querySelectorAll("form");
-      allForms.forEach((form) => {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-        });
-      });
-      const urlt = document.getElementById("name5");
-      const urlObj = new window.URL(window.location.href);
-      function embed() {
-        if (
-          !urlt.value.startsWith("https://") &&
-          !urlt.value.startsWith("http://")
-        ) {
-          urlt.value = `https://${urlt.value.split("https://").pop()}`;
-        } else if (urlt.value.startsWith("http://")) {
-          urlt.value = `https://${urlt.value.split("http://").pop()}`;
-        }
-        const win = window.open();
-        win.document.body.style.margin = "0";
-        win.document.body.style.height = "100vh";
-        const iframe = win.document.createElement("iframe");
-        iframe.style.border = "none";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.margin = "0";
-        iframe.referrerpolicy = "no-referrer";
-        iframe.allow = "fullscreen";
-        iframe.src = urlt.value;
-        win.document.body.appendChild(iframe);
-      }
+    <h2>Enter the website you wish to embed below:</h2>
 
-      const custom = document.getElementById("custom");
-      const first = document.getElementById("color1");
-      const second = document.getElementById("color2");
-      let custom1 = localStorage.getItem("first");
-      let custom2 = localStorage.getItem("second");
-      if (custom1) {
-        first.value = custom1;
-      }
-      if (custom2) {
-        second.value = custom2;
-      }
-      function create() {
-        custom.style.visibility = "visible";
-        custom.style.opacity = "1";
-        document.addEventListener("click", (e) => {
-          if (
-            e.target.getAttribute("id") != "custombtn" &&
-            e.target != custom &&
-            e.target != first &&
-            e.target != second
-          ) {
-            custom.style.opacity = "0";
-            custom.style.visibility = "hidden";
-            document.documentElement.style.setProperty(
-              "--bg-color",
-              first.value
-            );
-            document.documentElement.style.setProperty(
-              "--bg-color-2",
-              second.value
-            );
-            localStorage.setItem("theme", "custom");
-            localStorage.setItem("first", first.value);
-            localStorage.setItem("second", second.value);
-          } else {
-            custom.style.opacity = "1";
-            custom.style.visibility = "visible";
-          }
-        });
-      }
-      function dark() {
-        localStorage.setItem("theme", null);
-      }
+    <form id="embedForm">
+        <input type="text" id="name5" placeholder="Enter a website URL">
+        <br>
+        <button type="submit">Ascend to Agartha!</button>
+    </form>
 
-      function ddark() {
-        localStorage.setItem("theme", "deep");
-      }
+    <img src="https://cmsv2-assets.apptegy.net/uploads/4189/logo/3514/logo.png"
+         width="110" height="110"
+         style="border-radius:50%; margin-top:40px;">
 
-      function light() {
-        localStorage.setItem("theme", "light");
-      }
+</div>
 
-      function cyber() {
-        localStorage.setItem("theme", "cyber");
-      }
-    </script>
-  </body>
+<footer class="footer">
+    <strong>© CF, ZL, AH. All rights reserved.</strong><br>
+    <strong>GOD <span style="color:#0038b8;">BLESS</span> ISRAEL!</strong>
+</footer>
+
+<script>
+const form = document.getElementById("embedForm");
+const urlInput = document.getElementById("name5");
+
+/* Prevent reload */
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    embed();
+});
+
+/* about:blank opener */
+document.getElementById("macvgabout").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const win = window.open();
+    const iframe = win.document.createElement("iframe");
+
+    iframe.style = "border:none;width:100%;height:100%";
+    iframe.src = window.location.href;
+
+    win.document.body.style.margin = "0";
+    win.document.body.appendChild(iframe);
+});
+
+/* embed function */
+function embed() {
+    let url = urlInput.value.trim();
+
+    if (!url.startsWith("https://") && !url.startsWith("http://")) {
+        url = "https://" + url;
+    }
+
+    const win = window.open();
+    const iframe = win.document.createElement("iframe");
+
+    iframe.style = "border:none;width:100%;height:100%";
+    iframe.src = url;
+
+    win.document.body.style.margin = "0";
+    win.document.body.appendChild(iframe);
+}
+</script>
+
+</body>
 </html>
