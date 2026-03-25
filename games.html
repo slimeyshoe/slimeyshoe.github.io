@@ -193,24 +193,9 @@ footer{
 const games = [
     {
         name:"Eagle Ride",
-        page:"eagleride.html",
+        page:"games/eagleride.html",
         thumb:"images/eagle-ride_16x9-cover.png"
     },
-    {
-        name:"Diddy",
-        page:"game2.html",
-        thumb:""
-    },
-    {
-        name:"Blud",
-        page:"game3.html",
-        thumb:""
-    },
-	{
-		name:"NIG",
-		page:"ger.html",
-		thumb:""
-	}
 ];
 
 /* Grid builder */
@@ -218,7 +203,7 @@ const grid = document.getElementById("gameGrid");
 
 games.forEach(game => {
     const card = document.createElement("a");
-    card.href = games/game.page;
+    card.href = game.page;
     card.className = "card";
 
     card.innerHTML = `
