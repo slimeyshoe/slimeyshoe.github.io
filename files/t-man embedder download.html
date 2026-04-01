@@ -55,12 +55,9 @@ button {
         Open in about:blank
     </a>
 
-    <div style="margin: 40px;">
-        <a href="https://docs.google.com/document/d/1AmSeJrz6JkgCVQAG14qwuisv3C-_7CYEpcyH8bcU5EU/edit"
-           target="_blank" style="color:red;">
-           Helpful Links (Request Access)
-        </a>
-    </div>
+    <button id="downloadBtn" style="background-color:red; color:white; font-size:16px; border:none; border-radius:5px;">
+    Download This Page
+</button>
 
     <h2>Enter the website you wish to embed below:</h2>
 
@@ -82,6 +79,24 @@ button {
 </footer>
 
 <script>
+/* Download page functionality */
+document.getElementById("downloadBtn").addEventListener("click", () => {
+    // Get the current HTML of the page
+    const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+    
+    // Create a Blob with the HTML content
+    const blob = new Blob([htmlContent], { type: "text/html" });
+    
+    // Create a temporary link to trigger the download
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Tuckerman_Embedder.html"; // file name
+    a.click();
+    
+    // Clean up the URL object
+    URL.revokeObjectURL(a.href);
+});
+
 const form = document.getElementById("embedForm");
 const urlInput = document.getElementById("name5");
 
