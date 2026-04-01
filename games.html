@@ -70,10 +70,11 @@ nav a:hover{
 }
 
 .hero p{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 	font-weight:bold;
     color:#58fa59;
-    max-width:600px;
-    margin:auto;
 }
 
 /*Section*/
@@ -155,13 +156,34 @@ footer{
     font-size:14px;
 }
 
+.search-bar{
+    display:flex;
+    margin-top:-50px;
+    justify-content: center;
+    color:#58fa59;
+}
 
+.search-bar input{
+    width:60%;
+    max-width:400px;
+    padding:10px;
+    border-radius:8px;
+    border:2px solid #aa85ff;
+    background:rgba(0,0,0,0.75);
+    color:#58fa59;
+    font-size:14px;
+    outline:none;
+    transition:.25s;
+}
+
+.search-bar input:focus{
+    border-color:#58fa59;
+}
 
 </style>
 
 <header>
-	<body>
-		<div>
+	<div>
 		<a href="index.html" class="logo">The Shoe Shelf</a>
 	</div>
 
@@ -173,15 +195,19 @@ footer{
 <a href="about.html">About</a>
 </nav>
 </header>
-
 </head>
 
-<div class="hero">
 <body>
+
+<div class="hero">
 
 <h1>All Games</h1>
 
 <p>The best goy-boy game selection out there!</p>
+</div>
+	
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search games...">
 </div>
 
 <div class="container">
@@ -189,29 +215,48 @@ footer{
 </div>
 
 <script>
-/* Game add section */
 const games = [
     {
         name:"Eagle Ride",
         page:"games/eagleride.html",
         thumb:"images/eagle-ride_16x9-cover.png"
     },
+    // You can add more games here
+    {
+        name:"Speed Racer",
+        page:"games/speedracer.html",
+        thumb:"images/speed-racer.png"
+    },
 ];
 
-/* Grid builder */
 const grid = document.getElementById("gameGrid");
+const searchInput = document.getElementById("searchInput");
 
-games.forEach(game => {
-    const card = document.createElement("a");
-    card.href = game.page;
-    card.className = "card";
+function displayGames(filter = "") {
+    grid.innerHTML = ""; // clear grid
 
-    card.innerHTML = `
-        <div class="thumb" style="background-image:url('${game.thumb}'); background-size:cover;"></div>
-        <div class="name">${game.name}</div>
-    `;
+    games
+        .filter(game => game.name.toLowerCase().includes(filter.toLowerCase()))
+        .forEach(game => {
+            const card = document.createElement("a");
+            card.href = game.page;
+            card.className = "card";
 
-    grid.appendChild(card);
+            card.innerHTML = `
+                <div class="thumb" style="background-image:url('${game.thumb}'); background-size:cover;"></div>
+                <div class="name">${game.name}</div>
+            `;
+
+            grid.appendChild(card);
+        });
+}
+
+// Initial load
+displayGames();
+
+// Search input event
+searchInput.addEventListener("input", () => {
+    displayGames(searchInput.value);
 });
 </script>
 
