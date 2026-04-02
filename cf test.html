@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="images/slimyshoeclear.png">
 
-<title>The Shoe Shelf</title>
+<title>Notepad - The Shoe Shelf</title>
 
 <style>
-
 body{
 	margin:0;
 	flex:1;
@@ -27,7 +25,7 @@ header{
 	box-sizing: border-box;
 	width:100%;
 	background-color:rgba(0,0,0,0.75);
-    border-bottom:2px solid #aa85ff;
+    border-bottom:4px solid #aa85ff;
     padding:18px;
 	display:flex;
     justify-content:space-between;
@@ -61,153 +59,78 @@ nav a:hover{
 	transform:translateY(-5px) scale(1.02);
 }
 
-/* Hero */
-
-.hero{
-    text-align:center;
-    padding:100px 20px;
-}
-
-.hero h1{
-    font-size:42px;
-}
-
-.hero p{
-	font-weight:bold;
-    color:#58fa59;
-    max-width:600px;
-    margin:auto;
-}
-
-.hero button{
-    margin-top:25px;
-    padding:12px 26px;
-    border-radius:6px;
-    background:rgba(0,0,0,0.75);
-	transition:.25s;
-    color:#58fa59;
-    font-size:16px;
-    cursor:pointer;
-    border:2px solid #aa85ff;
-}
-
-.hero button:hover{
-    transform:translateY(-5px) scale(1.02);
-}
-
-h1{
-	color:#aa85ff;
-    font-size:26px;
-	text-decoration:none;
-    font-weight:bold;
-    transition:.25s;
-}
-
-h1:hover{
-    color:#58fa59;
-    transform:translateY(-5px) scale(1.02);
-}
-
-
-/*Section*/
-
+/* Layout */
 .container{
-    padding:40px 8%;
+    max-width:900px;
+    margin:0 auto;
+    padding:100px 20px 20px;
 }
 
-.section-title{
-	font-weight:bold;
-	color:#aa85ff;
-    font-size:24px;
-    margin-bottom:20px;
-	transition:.25s
-}
-
-.section-title:hover{
-	color:#58fa59;
-	transform:translateY(-5px)scale(1.02);
-}
-
-/* Others */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-	text-decoration: none;
-    gap:20px;
-}
-
+/* Card style */
 .card{
-	color:#aa85ff;
-    background:rgba(0,0,0,0.75);
-    border-radius:10px;
-    padding:25px;
-	text-decoration: none;
-    transition:.25s;
-    cursor:pointer;
-    border:2px solid #aa85ff;
+    background:#141414;
+    border:1px solid #262626;
+    border-radius:14px;
+    padding:16px;
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
 }
 
-.card:hover{
-    transform:translateY(-5px) scale(1.02);
-	text-decoration: none;
+/* Top bar */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
 }
 
-.card h3{
-    margin-top:0;
+/* Title input */
+#noteTitle{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    width:100%;
 }
 
-.card p{
+/* Buttons */
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+button{
+    background:#aa85ff;
+    border:2px solid #58fa59;
     color:#58fa59;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.25s;
 }
 
-/* Footer */
-
-footer{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	height:75px;
-	width:100vw;
-	position: fixed;
-	bottom: 0;
+button:hover{
+    background:#58fa59;
     color:#aa85ff;
-	transition:.25s;
+    border-color:#aa85ff;
 }
 
-footer:hover{
-	color:#58fa59;
-	transform:translateY(-5px)scale(1.02)
-
+/* Editor */
+#editor{
+    width:100%;
+    height:400px;
+    background:#0d0d0d;
+    border:1px solid #262626;
+    border-radius:10px;
+    padding:12px;
+    color:#e5e5e5;
+    font-size:15px;
+    resize:none;
+    outline:none;
+    margin-top:10px;
+}
 </style>
-
-<!--about:blank function script-->
-
-<script>
-function openBlank(){
-    let win = window.open();
-    
-    if(!win){
-        alert("<b>Popup blocked!</b> Please allow popups for this site.");
-        return;
-    }
-
-    win.document.body.style.margin = "0";
-
-    let iframe = win.document.createElement("iframe");
-    iframe.style.border = "none";
-    iframe.style.width = "100vw";
-    iframe.style.height = "100vh";
-    iframe.src = window.location.href;
-
-    win.document.body.appendChild(iframe);
-}
-</script>
-
-</head>
-
-<body>
-
 <header>
 
 <div>
@@ -223,45 +146,63 @@ function openBlank(){
 </nav>
 
 </header>
+</head>
 
-<section class="hero">
-
-<h1>The Shoe Shelf</h1>
-
-<p>Sponsored by Richmond.</p>
-
-<button onclick="openBlank()" class="blank-button">Open in about:blank</button>
-
-</section>
+<body>
 
 <div class="container">
+    <div class="card">
 
-<div class="section-title">Featured Tools</div>
+        <div class="topbar">
+            <input id="noteTitle" placeholder="Untitled Note">
+            <div class="actions">
+                <button onclick="clearNote()">Clear</button>
+                <button onclick="downloadNote()">Download</button>
+            </div>
+        </div>
 
-<div class="grid">
+        <textarea id="editor" placeholder="Start typing..."></textarea>
 
-<a href="files/t-man embedder download.html" text-decoration: none; class="card">
-<h3>Tuckerman Embedder</h3>
-<p>Embed and browse websites via iframe in about:blank.</p>
-</a>
-
-<a href="browser.html" class="card">
-<h3>"THE PROJECT"</h3>
-<p>An iframe-based "browser" with a history tab & bookmarks.</p>
-</a>
-
-<a href="games.html" class="card">
-<h3>Our Game Website</h3>
-<p>Play browser games instantly.<br>No downloads necessary.</p>
-</a>
-
+    </div>
 </div>
 
-</div>
+<script>
+const editor = document.getElementById("editor");
+const title = document.getElementById("noteTitle");
 
-<footer>
+/* Load saved */
+editor.value = localStorage.getItem("ss_note") || "";
+title.value = localStorage.getItem("ss_title") || "";
 
-© CF, ZL, AH, TR.
+/* Auto-save */
+editor.addEventListener("input", save);
+title.addEventListener("input", save);
+
+function save(){
+    localStorage.setItem("ss_note", editor.value);
+    localStorage.setItem("ss_title", title.value);
+}
+
+/* Clear */
+function clearNote(){
+    if(confirm("Delete this note?")){
+        editor.value = "";
+        title.value = "";
+        localStorage.removeItem("ss_note");
+        localStorage.removeItem("ss_title");
+    }
+}
+
+/* Download */
+function downloadNote(){
+    const content = title.value + "\n\n" + editor.value;
+    const blob = new Blob([content], { type: "text/plain" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = (title.value || "note") + ".txt";
+    a.click();
+}
+</script>
+
 </body>
-</footer>
 </html>
