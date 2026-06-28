@@ -1,3 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shoe Shelf | Chatroom</title>
+
+<link rel="icon" href="favicon.ico">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(rgba(10,10,20,.82),rgba(10,10,20,.82)),
+url("background.gif");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:white;
+
+min-height:100vh;
+
+}
+
+/* Header */
+
+header{
+
+width:100%;
+padding:20px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(20,20,30,.65);
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+font-size:30px;
+font-weight:bold;
+
+color:#aa85ff;
+
+}
+
+nav{
+
+display:flex;
+gap:15px;
+
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+
+padding:10px 18px;
+
+border-radius:12px;
+
+transition:.25s;
+
+}
+
+nav a:hover{
+
+background:#aa85ff;
+color:white;
+
+}
+
+/* Main */
+
+.wrapper{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:40px 20px;
+
+}
+
+.hero{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+color:#aa85ff;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+opacity:.8;
+
+}
+
+/* Chat Card */
+
+.chat-card{
+
+background:rgba(30,30,40,.6);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+padding:30px;
+
+box-shadow:
+0 0 35px rgba(170,133,255,.12);
+
+transition:.3s;
+
+}
+
+.chat-card:hover{
+
+box-shadow:
+0 0 50px rgba(170,133,255,.2);
+
+}
+
+/* Footer */
+
+footer{
+
+margin-top:40px;
+
+text-align:center;
+
+opacity:.5;
+
+padding:20px;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#aa85ff;
+
+border-radius:50px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#171717;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+The Shoe Shelf
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="tools.html">Tools</a>
+<a href="games.html">Games</a>
+<a href="chatroom.html">Chat</a>
+
+</nav>
+
+</header>
+
+<div class="wrapper">
+
+<div class="hero">
+
+<h1>Chatroom</h1>
+
+<p>
+Talk with other Shoe Shelf users, ask questions, or just hang out.
+</p>
+
+</div>
+
+<div class="chat-card">
+
+<!-- Giscus -->
+
 <script src="https://giscus.app/client.js"
         data-repo="slimeyshoe/slimeyshoe.github.io"
         data-repo-id="R_kgDOQ-nRsw"
@@ -13,3 +241,18 @@
         crossorigin="anonymous"
         async>
 </script>
+
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 The Shoe Shelf
+
+</footer>
+
+</body>
+</html>
+
