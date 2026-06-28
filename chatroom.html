@@ -136,11 +136,20 @@ box-shadow:
 /* Footer */
 
 footer{
-color:#58fa59;
-margin-top:40px;
-text-align:center;
-opacity:.5;
-padding:20px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:75px;
+	width:100vw;
+	position: fixed;
+	bottom: 0;
+    color:#aa85ff;
+	transition:.25s;
+}
+
+footer:hover{
+	color:#58fa59;
+	transform:translateY(-5px)scale(1.02)
 }
 
 /* Scrollbar */
