@@ -76,7 +76,7 @@ button {
 </div>
 
 <footer class="footer">
-    <button href="https://slimeyshoe.github.io">back to homepage</button>
+   <a href="https://slimeyshoe.github.io" class="css-button">Back to Homepage</a>
     <strong>© CF, ZL, AH. All rights reserved.</strong><br>
     <strong>GOD <span style="color:#0038b8;">BLESS</span> ISRAEL!</strong>
 </footer>
@@ -139,6 +139,32 @@ function embed() {
     win.document.body.style.margin = "0";
     win.document.body.appendChild(iframe);
 }
+
+.css-button {
+
+  display: inline-block;        
+  padding: 12px 24px;           
+  margin: 10px;                 
+  
+  color: #ffffff;               
+  font-family: sans-serif;      
+  font-size: 16px;             
+  font-weight: 600;             
+  text-decoration: none;       
+  text-align: center;          
+  
+  background-color: #007bff;   
+  border: none;               
+  border-radius: 4px;          
+  cursor: pointer;              
+  
+  transition: background-color 0.3s ease; 
+}
+
+.css-button:hover {
+  background-color: #0056b3;
+}
+
 </script>
 
 </body>
