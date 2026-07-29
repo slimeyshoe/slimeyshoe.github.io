@@ -88,43 +88,9 @@ iframe{
     border:none;
 }
 
-/* game buttons */
-
-.controls{
-    margin-top:10px;
-    display:flex;
-    gap:10px;
-	justify-content:flex-end;
-}
-
-.button{
-	font-weight:bold;
-    padding:8px 12px;
-    border-radius:8px;
-    border:none;
-    background:#aa85ff;
-    color:#58fa59;
-    cursor:pointer;
-	transition:.25s;
-}
-
-.button:hover{
-    background:#58fa59;
-	color:#aa85ff;
-}
-
 .container h1:hover{
 	color:#58fa59;
 	transform:translateY(-5px)scale(1.02);
-}
-
-.description{
-    margin-top:15px;
-	color:#58fa59;
-    background-color:rgba(0,0,0,0.75);
-    border:2px solid #aa85ff;
-    border-radius:14px;
-    padding:15px;
 }
 
 </style>
@@ -150,7 +116,7 @@ iframe{
 
 <div class="container">
 
-    <h1>Example Game</h1>
+    <h1>Chatroom</h1>
 
 	<div class="game-box">
 		<div id="rt-fbfdbc3afeca28c65fc1975eeb5f4e11"></div> 
@@ -158,32 +124,6 @@ iframe{
 			</script>
 		</div>
 
-    <div class="controls">
-        <button class="button" onclick="fullscreen()">Fullscreen</button>
-        <button class="button" onclick="openBlank()">about:blank</button>
-    </div>
-
 </div>
-
-<script>
-function fullscreen(){
-    let iframe = document.getElementById("gameFrame");
-    if(iframe.requestFullscreen){
-        iframe.requestFullscreen();
-    }
-}
-
-function openBlank(){
-    let win = window.open("about:blank");
-    let iframe = win.document.createElement("iframe");
-    iframe.src = document.getElementById("gameFrame").src;
-    iframe.style.border = "none";
-    iframe.style.width = "100vw";
-    iframe.style.height = "100vh";
-    win.document.body.style.margin = "0";
-    win.document.body.appendChild(iframe);
-}
-</script>
-
 </body>
 </html>
